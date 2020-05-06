@@ -9,7 +9,7 @@ import UserAvatar from './UserAvatar'
 
 
 const USERS_QUERY = gql`
-  query {
+  query AllUsers {
     users {
       id
       name
