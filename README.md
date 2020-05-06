@@ -66,3 +66,14 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+### Issues
+
+#### Dependencies
+yarn add react-gravatar
+yarn add apollo-boost react-apollo graphql-tag apollo-link-http apollo-client apollo-cache-inmemory
+npm install graphql react-apollo
+
+#### Tutorials
+https://mattboldt.com/2019/06/23/rails-graphql-react-apollo-part-two/
