@@ -40,15 +40,11 @@ class Users extends Component {
             <div className="flex flex-wrap mb-4">
               <Fragment>
                 {data.users.map((user) => {
-                  return <div className="flex flex-wrap mb-4">
-                  {data.users.map((user) => {
                     return <div key={user.id}
                                 className="m-4 w-1/4 rounded overflow-hidden shadow-lg"
                                 onClick={this.props.selectUser.bind(this, user)}>
                       <UserAvatar user={user} />
                     </div>
-                  })}
-                </div>
                 })}
                 <div className="m-4 w-1/4 rounded overflow-hidden shadow-lg">
                   <CreateUser onCreateUser={this.updateUsers} />
