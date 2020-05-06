@@ -69,6 +69,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 ### Issues
+Lots of dependency issues from yarn not installing things properly, had to use npm
+Modding js to ts files (https://gist.github.com/afternoon/9022899)
+- find app/src -name "*.js" -exec sh -c 'mv "$0" "${0%.js}.ts"' {} \;
+
 
 #### Dependencies
 yarn add react-gravatar
