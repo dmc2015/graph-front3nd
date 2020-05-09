@@ -9,7 +9,11 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 
 const link = createHttpLink({
+  // if (REACT_APP_ENV == "development"){
   uri: 'http://localhost:3001/graphql'
+  // } else {
+  //   uri: 'backend:3001/graphql'
+  // }
 })
 
 const client = new ApolloClient({

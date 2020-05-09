@@ -1,0 +1,62 @@
+version: '3'
+
+volumes:
+  database_data:
+    driver: local
+
+services:
+################################
+#   Setup postgres container
+################################
+  # db:
+  #   image: postgres:latest
+  #   volumes:
+  #     - database_data:/var/lib/postgresql/data
+
+################################
+#   Setup node container
+################################
+  # backend:
+  #   build: 
+  #     context: ../graphql_api
+  #     dockerfile: Dockerfile
+  #   expose:
+  #     - 3001
+  #   ports:
+  #     - 3002:5000
+  #   volumes:
+  #     - ./graphql_api:/usr/src/app/
+  #   links:
+  #     - db
+  #   environment:
+  #     - EMAIL_ADDRESS=chronicleeyes@gmail.com
+  #     - EMAIL_PASSWORD_DEVELOPMENT=fnykaxouetuuocwc
+  #     - EMAIL_PASSWORD_PRODUCTION=fnykaxouetuuocwc
+  #     - DB_NAME=chronicleDB
+  #     - DB_USERNAME=postgres
+  #     - DB_PASSWORD=w2zDLFmdddI8pBu4&
+  #     - DB_PORT=5432
+  #     - DB_URL=
+
+################################
+#   Setup frontend container
+################################
+  frontend:
+    # tty: true
+    # stdin_open: true
+    build: .
+    # command: yarn start -p 3002 && tail -f /dev/null
+    # command: yarn start -p 3002
+    expose:
+      - 3002
+    volumes:
+      - ./app/src:/usr/src/app/src
+      - ./app/public:/usr/src/app/public
+    ports:
+      - 3002:4000
+    # links:
+    #   - backend  
+    # environment:
+      # BACKEND_URL: backend:3001/graphql
+      # BACK
+      # END_PORT: 3001
