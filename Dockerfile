@@ -6,6 +6,8 @@ WORKDIR /app
 
 # add `/app/node_modules/.bin` to $PATH
 ENV PATH /app/node_modules/.bin:$PATH
+ENV REACT_APP_GRAPHQL_API http://localhost:4000/graphql
+ENV REACT_APP_ENV development
 
 # install app dependencies
 COPY package.json ./
@@ -20,4 +22,5 @@ COPY . ./
 EXPOSE 3000
 
 # start app
-CMD ["npm", "start"]
+# CMD ["npm", "run", "start-dev", "-p", "3003"]
+CMD yarn start -p 3000
