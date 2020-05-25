@@ -7,13 +7,25 @@ import { ApolloClient } from 'apollo-client';
 import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
+function  getUrl() {
+  switch(process.env.REACT_APP_ENV){
+    case "development":
+      return process.env.REACT_APP_DEV_GRAPH_API
+    case "production":
+      return process.env.REACT_APP_GRAPHQL_API_PROD
+    case "staging":
+      return process.env.REACT_APP_GRAPHQL_API_STAGE
+    default:
+      return "http://localhost:4001/graphql"
+  }
+}
 
 const link = createHttpLink({
-  uri: 'http://localhost:3000/graphql'
+  uri: getUrl()
 })
 
 const client = new ApolloClient({
-  link: link,
+  link,
   cache: new InMemoryCache()
 })
 
@@ -32,7 +44,6 @@ import { createHttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 const link = createHttpLink({
-  uri: 'https://localhost:3000/graphql'
 });
 
 const client = new ApolloClient({

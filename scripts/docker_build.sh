@@ -1,0 +1,1 @@
+docker build -t chronicle-frontend:dev .
