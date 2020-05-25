@@ -1,10 +1,10 @@
-version: '3'
+# version: '3'
 
-volumes:
-  database_data:
-    driver: local
+# volumes:
+#   database_data:
+#     driver: local
 
-services:
+# services:
 ################################
 #   Setup postgres container
 ################################
@@ -17,7 +17,7 @@ services:
 #   Setup node container
 ################################
   # backend:
-  #   build: 
+  #   build:
   #     context: ../graphql_api
   #     dockerfile: Dockerfile
   #   expose:
@@ -41,22 +41,46 @@ services:
 ################################
 #   Setup frontend container
 ################################
-  frontend:
-    # tty: true
-    # stdin_open: true
-    build: .
+  # frontend:
+  #   tty: true
+  #   stdin_open: true
+  #   build: .
     # command: yarn start -p 3002 && tail -f /dev/null
     # command: yarn start -p 3002
-    expose:
-      - 3002
-    volumes:
-      - ./app/src:/usr/src/app/src
-      - ./app/public:/usr/src/app/public
-    ports:
-      - 3002:4000
+    # expose:
+    #   - 4000
+    # volumes:
+    #   - ./app/src:/usr/src/app/src
+    #   - ./app/public:/usr/src/app/public
+    # ports:
+    #   - 3000:4000
     # links:
-    #   - backend  
+    #   - backend
     # environment:
       # BACKEND_URL: backend:3001/graphql
       # BACK
       # END_PORT: 3001
+################------------------------------------------####################
+
+
+version: '3.7'
+
+services:
+
+  sample:
+    tty: true
+    stdin_open: true
+    container_name: sample
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'
+    ports:
+      - 3001:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - REACT_APP_ENV=development
+      - REACT_APP_DEV_GRAPH_API=http://backend:3001/graphql
+      - BACKEND_PORT=3001

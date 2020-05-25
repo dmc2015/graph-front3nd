@@ -77,3 +77,4 @@ npm install graphql react-apollo
 
 #### Tutorials
 https://mattboldt.com/2019/06/23/rails-graphql-react-apollo-part-two/
+https://mherman.org/blog/dockerizing-a-react-app/
